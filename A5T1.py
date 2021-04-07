@@ -14,7 +14,7 @@ def main():
 
 	cursor.execute("DROP TABLE IF EXISTS Airbnb_listings_summary;")
 
-	table1 = '''CREATE TABLE Airbnb_reviews(
+	table1 = '''CREATE TABLE reviews(
 			listing_id INTEGER,
 			id INTEGER PRIMARY KEY,
 			date TEXT,
@@ -23,7 +23,7 @@ def main():
 			comments TEXT
 			);'''
 
-	table2 = '''CREATE TABLE Airbnb_listings_summary(
+	table2 = '''CREATE TABLE listings(
 			id INTEGER PRIMARY KEY,
 			name TEXT,
 			host_id INTEGER,
@@ -41,12 +41,12 @@ def main():
 	reviewsFile = open("YVR_Airbnb_reviews.csv", "r", encoding='utf8')
 	reviewsRows = csv.reader(reviewsFile)
 	next(reviewsRows) # jumps to row after the header
-	cursor.executemany("INSERT INTO Airbnb_reviews VALUES (?, ?, ?, ?, ?, ?)", reviewsRows)
+	cursor.executemany("INSERT INTO reviews VALUES (?, ?, ?, ?, ?, ?)", reviewsRows)
 
 	listingsFile = open("YVR_Airbnb_listings_summary.csv", "r", encoding='utf8')
 	listingsRows = csv.reader(listingsFile)
 	next(listingsRows) #jumps to row after the header
-	cursor.executemany("INSERT INTO Airbnb_listings_summary VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", listingsRows)
+	cursor.executemany("INSERT INTO listings VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", listingsRows)
 
 	connection.commit()
 	connection.close()
