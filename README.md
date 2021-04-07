@@ -58,19 +58,19 @@ IMPORTANT: there are 7 tasks below but you need to complete only 5 of them. Task
 
 You will write two versions of several Python applications, one connecting to and using the SQLite database (A5TxSQLite.py) and the other one connecting to and using the MongoDB database (A5TxMongoDB.py), where the x in the file name is related to the tasks below. Your applications will provide simple command line-like menu allowing them to execute the following tasks and will output the task result as well as its running time. Note that the basic framework of all applications is very similar, the breaking into one application per task has mainly to do with the submission and marking logistics).
 
-Task 3 (A5T3SQLite.py and A5T3MongoDB.py): Find how many listings each host own, ordering the output by host_id and only output the top 10.
+* Task 3 (A5T3SQLite.py and A5T3MongoDB.py): Find how many listings each host own, ordering the output by host_id and only output the top 10.
 
-Task 4 (A5T4SQLite.py and A5T4MongoDB.py): Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10? 
+* **Task 4 (A5T4SQLite.py and A5T4MongoDB.py): Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10? 
 
-Task 5 (A5T5SQLite.py and A5T5MongoDB.py): Given a neighbourhood at run-time (e.g., using command line prompt or via an application parameter) find the average rental cost/night?
+* Task 5 (A5T5SQLite.py and A5T5MongoDB.py): Given a neighbourhood at run-time (e.g., using command line prompt or via an application parameter) find the average rental cost/night?
 
-Task 6 (A5T6SQLite.py and A5T6MongoDB.py): Increase the rental cost/night by 10% for all properties in a neighbourhood given at run-time (e.g., using command line prompt or via an application parameter).
+* Task 6 (A5T6SQLite.py and A5T6MongoDB.py): Increase the rental cost/night by 10% for all properties in a neighbourhood given at run-time (e.g., using command line prompt or via an application parameter).
 
-Task7 (A5T7SQLite.py and A5T7MongoDB.py): Add a new attribute called "avgRating” to the table reviews in SQLite and to the documents in the listings collection and insert a random number between 1 and 10 for that new attribute.
+* Task7 (A5T7SQLite.py and A5T7MongoDB.py): Add a new attribute called "avgRating” to the table reviews in SQLite and to the documents in the listings collection and insert a random number between 1 and 10 for that new attribute.
 
-Task 8 (A5T8SQLite.py and A5T8MongoDB.py): Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing.
+* **Task 8 (A5T8SQLite.py and A5T8MongoDB.py): Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing.
 
-Task 9 (A5T9SQLite.py and A5T9MongoDB.py): Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet". 
+* **Task 9 (A5T9SQLite.py and A5T9MongoDB.py): Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet". 
 
 Important notes wrt Task 9: 
 
