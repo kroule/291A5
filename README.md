@@ -60,7 +60,7 @@ You will write two versions of several Python applications, one connecting to an
 
 * Task 3 (A5T3SQLite.py and A5T3MongoDB.py): Find how many listings each host own, ordering the output by host_id and only output the top 10.
 
-* **Task 4 (A5T4SQLite.py and A5T4MongoDB.py): Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10? 
+* **Task 4 (A5T4SQLite.py and A5T4MongoDB.py): Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10?** 
 
 * Task 5 (A5T5SQLite.py and A5T5MongoDB.py): Given a neighbourhood at run-time (e.g., using command line prompt or via an application parameter) find the average rental cost/night?
 
@@ -68,9 +68,9 @@ You will write two versions of several Python applications, one connecting to an
 
 * Task7 (A5T7SQLite.py and A5T7MongoDB.py): Add a new attribute called "avgRating” to the table reviews in SQLite and to the documents in the listings collection and insert a random number between 1 and 10 for that new attribute.
 
-* **Task 8 (A5T8SQLite.py and A5T8MongoDB.py): Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing.
+* **Task 8 (A5T8SQLite.py and A5T8MongoDB.py): Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing.**
 
-* **Task 9 (A5T9SQLite.py and A5T9MongoDB.py): Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet". 
+* **Task 9 (A5T9SQLite.py and A5T9MongoDB.py): Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet".**
 
 Important notes wrt Task 9: 
 
