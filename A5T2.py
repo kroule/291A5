@@ -29,3 +29,10 @@ should return
 
 { "_id" : null, "min" : 26444, "max" : 730124064, "avg" : 370354766.84915775, "count" : 147936 }
 """
+
+from pymongo import MongoClient 
+
+client = MongoClient()
+database = client["A5db"]
+collist = database.list_collection_names()
+
