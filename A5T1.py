@@ -36,13 +36,15 @@ def main():
 	cursor.execute(table1)
 	cursor.execute(table2)
 
-	reviewsFile = open("YVR_Airbnb_reviews.csv", "r")
+	reviewsFile = open("YVR_Airbnb_reviews.csv", "r", encoding='utf8')
 	reviewsRows = csv.reader(reviewsFile)
+	next(reviewsRows) # jumps to row after the header
 	cursor.executemany("INSERT INTO Airbnb_reviews VALUES (?, ?, ?, ?, ?, ?)", reviewsRows)
 
-	listingsFile = open("YVR_Airbnb_listings_summary.csv", "r")
+	listingsFile = open("YVR_Airbnb_listings_summary.csv", "r", encoding='utf8')
 	listingsRows = csv.reader(listingsFile)
-	cursor.executemany("INSERT INTO Airbnb_listings_summary vALUES (?, ?, ?, ?, ?, ?, ?)", listingsRows)
+	next(listingsRows) #jumps to row after the header
+	cursor.executemany("INSERT INTO Airbnb_listings_summary VALUES (?, ?, ?, ?, ?, ?, ?)", listingsRows)
 
 	connection.commit()
 	connection.close()
