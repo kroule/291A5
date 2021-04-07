@@ -30,7 +30,9 @@ def main():
 			host_name TEXT,
 			neighbourhood TEXT,
 			room_type TEXT,
-			price INTEGER
+			price INTEGER,
+			minimum_nights INTEGER,
+			availability_365 INTEGER
 			);'''
 
 	cursor.execute(table1)
@@ -44,7 +46,7 @@ def main():
 	listingsFile = open("YVR_Airbnb_listings_summary.csv", "r", encoding='utf8')
 	listingsRows = csv.reader(listingsFile)
 	next(listingsRows) #jumps to row after the header
-	cursor.executemany("INSERT INTO Airbnb_listings_summary VALUES (?, ?, ?, ?, ?, ?, ?)", listingsRows)
+	cursor.executemany("INSERT INTO Airbnb_listings_summary VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", listingsRows)
 
 	connection.commit()
 	connection.close()
