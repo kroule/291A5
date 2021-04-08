@@ -31,8 +31,13 @@ should return
 """
 
 from pymongo import MongoClient 
+import pandas as pd
+import json
 
-client = MongoClient()
-database = client["A5db"]
-collist = database.list_collection_names()
+def main():
 
+	client = MongoClient()
+
+	database = client["A5db"]
+	collection = database["listings"]
+	collection.delete_many({})
