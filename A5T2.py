@@ -15,11 +15,11 @@ def main():
 
 	listingsrows = csv.reader(csvfilelistings)
 	next(listingsrows)
-	listings = collection.insert_many(listingsrows)
+	collection.insert_many(listingsrows)
 
 	reviewsrows = csv.reader(csvfilereviews)
 	next(reviewsrows)
-	reviews = collection.insert_many(listingsrows)
+	reviews = collection.insert_many(reviewsrows)
 	
 	
 	csvfilelistings.close()
