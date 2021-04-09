@@ -4,25 +4,32 @@ from pymongo import MongoClient
 import csv
 def main():
 
-	client = MongoClient('localhost', 27017)
+	client = MongoClient('localhost', 27008)
 
 	database = client["A5db"]
 
 	collection = database["listings"]
-	
-	csvfilelistings = open("YVR_Airbnb_listings_summary.csv", "r", encoding='utf8')
-	csvfilereviews = open("YVR_Airbnb_reviews.csv", "r", encoding='utf8')
 
-	listingsrows = csv.reader(csvfilelistings)
+	with open ('YVR_Airbnb_listings_summary.csv', newline='') as csvfile:
+		reader = csv.DictReader(csvfile)
+		for row in reader:
+			listings = collection.insert_one(row)
+
+	'''
+	csvlistings = open("YVR_Airbnb_listings_summary.csv", "r", encoding='utf8')
+	csvreviews = open("YVR_Airbnb_reviews.csv", "r", encoding='utf8')
+
+	listingsrows = csv.reader(csvlistings)
 	next(listingsrows)
-	collection.insert_many(listingsrows)
-
+	listings = collection.insert_many(listingsrows)
+	
 	reviewsrows = csv.reader(csvfilereviews)
 	next(reviewsrows)
 	reviews = collection.insert_many(reviewsrows)
-	
+
 	
 	csvfilelistings.close()
 	csvfilereviews.close()
+	'''
 	client.close()
 main()
