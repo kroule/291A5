@@ -9,10 +9,12 @@ def main():
 	database = client["A5db"]
 
 
+	
 	collection = database["listings"]
 
 	collection.delete_many({})
 
+	'''
 	with open('YVR_Airbnb_listings_summary.csv', 'r', encoding= 'utf8') as csvfile:
 		header = ["id", "name", "host_id", "host_name", "neighbourhood", "room_type", "price", "minimum_nights", "availability_365"]
 		reader = csv.reader(csvfile)
@@ -21,6 +23,21 @@ def main():
 			for n in range(0, len(header)):
 				doc[header[n]] = row[n]
 			collection.insert_one(doc)
+
+	'''
+
+	listingsfile = open('YVR_Airbnb_listings_summary.csv', 'r', encoding= 'utf8')
+	reviewsfile = open('YVR_Airbnb_reviews.csv', 'r', encoding = 'utf8')
+
+	listingsrows = csv.DictReader(listingsfile)
+	reviewsrows = csv.DictReader(reviewsfile)
+
+	header = ["id", "name", "host_id", "host_name", "neighbourhood", "room_type", "price", "minimum_nights", "availability_365"]
+	for rows in listingsrows:
+		row = {}
+		for field in header:
+			row[field] = rows[field]
+		collection.insert_one(row)
 
 	client.close()
 main()
