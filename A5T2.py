@@ -14,6 +14,7 @@ def main():
 
 	collection.delete_many({})
 
+
 	listingsfile = open('YVR_Airbnb_listings_summary.csv', 'r', encoding= 'utf8')
 	reviewsfile = open('YVR_Airbnb_reviews.csv', 'r', encoding = 'utf8')
 
@@ -21,11 +22,15 @@ def main():
 	reviewsrows = csv.DictReader(reviewsfile)
 
 	header = ["id", "name", "host_id", "host_name", "neighbourhood", "room_type", "price", "minimum_nights", "availability_365"]
+	
+
+	
 	for rows in listingsrows:
 		row = {}
 		for field in header:
 			row[field] = rows[field]
 		collection.insert_one(row)
-
+	
 	client.close()
+
 main()
