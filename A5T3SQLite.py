@@ -13,8 +13,9 @@ A5 = []
 def runQuery():
         global connection, cursor
         
+        """ SELECT host_id, count(id) FROM listings GROUP BY host_id ORDER BY count(id) DESC LIMIT 10; """ # might be the correct way
         #SQL STATEMENT: select the number of times the host id appears as well as the host id and then group it by the host id and limit the results to 10.
-        Query = """SELECT count(host_id), host_id FROM listings GROUP BY host_id LIMIT 10 """
+        Query = """SELECT count(id), host_id FROM listings GROUP BY host_id LIMIT 10 """
         connection = sqlite3.connect('A5.db')
         cursor = connection.cursor()
         #execute the query with no runtime input as no input is required
