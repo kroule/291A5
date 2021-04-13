@@ -1,1 +1,0 @@
-""" Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10? """
