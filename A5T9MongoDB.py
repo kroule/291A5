@@ -1,4 +1,3 @@
-  
 """ Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet".  """
 
 from pymongo import MongoClient
@@ -6,7 +5,6 @@ import time
 
 client = MongoClient()
 db = client["A5db"]
-start_time = time.time()
 
 def runQuery():
     # Create or open the collection in the db
@@ -14,20 +12,14 @@ def runQuery():
     user = str(input('enter keywords: '))
     """ Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet".  """
     index_name = listings_collection.create_index( [("reviews.comments", "text")] )
-    results = listings_collection.find ({ "reviews.comments" : { "$regex" : user } }).limit(3)
+    results = listings_collection.aggregate( [
+        { "$match" : { "$text" : { "$search" : user } } },
+        { "$sort" : { "score" : { "$meta" : "textScore" } } },
+        { "$project" : { "id" : 1, "_id" : 0, "score" : { "$meta" : "textScore" } } },         #Uncomment this to just see 'listing_id' + text score
+        { "$limit" : 3 }
+    ])
     for row in results:
-        for i, v in row.items():
-            if(type(v) == str):
-                print(v.encode("utf-8"))
-            elif ( type(v) == list ):
-                for j in v:
-                    for k, l in j.items():
-                        if( type(l) == str ):
-                            print(l.encode("utf-8"))
-                        else:
-                            print(l)
-            else:
-                print(i + str(v))
+        print(row)
 
 
 def main():
@@ -36,7 +28,8 @@ def main():
     if "listings" in collist:
         print("The collection exists.")
         
+    start_time = time.time()    
     runQuery()
+    print("A5 Task 9 runtime:  %s seconds" % (time.time() - start_time))
 
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))
