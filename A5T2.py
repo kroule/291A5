@@ -3,15 +3,9 @@ import pymongo
 from pymongo import MongoClient
 import csv
 def main():
-
-	# I may forget to change this back, apologies
-
-	#client = MongoClient('localhost', 27008)
-	client = MongoClient('localhost', 27017)
+	client = MongoClient()
 
 	database = client["A5db"]
-
-
 	
 	collection = database["listings"]
 
@@ -81,7 +75,7 @@ def main():
 	### All done!
 	client.close()
 	
-	### This builds the following structure, Please verify this works okay!
+	### This builds the following structure
 	#listings 
 	#[ 
 	  #{

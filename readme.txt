@@ -6,14 +6,19 @@ Name: Jacob Nguyen, Keaton Roulette, Liam Gyori
 ccid: jvnguyen, roulette, lgyori
 collaboration statement: The above members worked on the project together
 Included files: 
+	- README.txt
 	- A5T1.py
 	- A5T2.py
-
-	- A5T4SQLite.py
+	- A5T3MongoDB.py
+	- A5T3SQLite.py
 	- A5T4MongoDB.py
+	- A5T4SQLite.py
+	- A5T5MongoDB.py
+	- A5T5SQLite.py
 	- A5T8SQLite.py
 	- A5T8MongoDB.py
-	- A5T9SQLite.py
 	- A5T9MongoDB.py
 
-	- Tasks 3, 5, 6, 7 (whichever 2 we choose)
+Instructions:
+	1). Make sure to have the "YVR_Airbnb_listings_summary.csv" and "YVR_Airbnb_reviews.csv" data in the same directory as the following files.
+	2). Run A5T1.py and A5T2.py. This will create the databases 
