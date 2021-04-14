@@ -2,9 +2,10 @@
 #Find how many listings each host own, ordering the output by host_id and only output the top 10.
 
 import sqlite3
-
+import time
 connection = None
 cursor = None
+start_time = time.time()
 
 A5 = []
 
@@ -38,3 +39,4 @@ def main():
         global connection, cursor
         runQuery()
 main()
+print("Program runtime:  %s seconds" % (time.time() - start_time))

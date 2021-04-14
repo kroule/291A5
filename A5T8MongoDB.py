@@ -1,18 +1,21 @@
 """ Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing. """
 
 from pymongo import MongoClient
+import time
 
 client = MongoClient()
 db = client["A5db"]
+start_time = time.time()
 
-def runQuery(listing_id):
+def runQuery():
     # Create or open the collection in the db
     listings_collection = db["listings"]
+    user = int(input('enter listing_id: '))
 
     """ Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing. """
     results = listings_collection.aggregate([
         {
-            "$match" : { "id": listing_id}
+            "$match" : { "id": user}
         },
         {
             "$unwind" : "$reviews"
@@ -37,6 +40,7 @@ def main():
     if "listings" in collist:
         print("The collection exists.")
         
-    runQuery(10080)
+    runQuery()
 
 main()
+print("Program runtime:  %s seconds" % (time.time() - start_time))

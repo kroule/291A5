@@ -1,9 +1,12 @@
+  
 """ Find how many listings each host own, ordering the output by host_id and only output the top 10. """
 
 from pymongo import MongoClient
+import time
 
 client = MongoClient()
 db = client["A5db"]
+start_time = time.time()
 
 def runQuery():
     # Create or open the collection in the db
@@ -37,3 +40,4 @@ def main():
     runQuery()
 
 main()
+print("Program runtime:  %s seconds" % (time.time() - start_time))

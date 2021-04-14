@@ -1,9 +1,10 @@
 #Application 5 task 8 
 #Given a listing_id at run-time (e.g., using command line prompt or via an application parameter) find the host_name, rental_price and the most recent review for that listing.
 import sqlite3
-
+import time
 connection = None
 cursor = None
+start_time = time.time()
 
 A5 = []
 
@@ -37,3 +38,4 @@ def main():
         print("Input listing id to find, host name, rental price and the most recent review")
         runQuery()
 main()
+print("Program runtime:  %s seconds" % (time.time() - start_time))
