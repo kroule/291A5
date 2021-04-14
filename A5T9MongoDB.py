@@ -15,8 +15,18 @@ def runQuery():
     index_name = listings_collection.create_index( [("reviews.comments", "text")] )
     results = listings_collection.find( { "$text" : { "$search" : user } } , { "score": { "$meta" : "textScore" } } ).sort( [("score", 1)] ).limit(1)
     for row in results:
-        print(u' '.join(row))
-        print("\n$#############################################\n")
+        for i, v in row.items():
+            if(type(v) == str):
+                print(v.encode("utf-8"))
+            elif ( type(v) == list ):
+                for j in v:
+                    for k, l in j.items():
+                        if( type(l) == str ):
+                            print(l.encode("utf-8"))
+                        else:
+                            print(l)
+            else:
+                print(i + str(v))
 
 
 def main():
