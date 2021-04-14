@@ -1,1 +1,0 @@
-""" Increase the rental cost/night by 10% for all properties in a neighbourhood given at run-time (e.g., using command line prompt or via an application parameter). """
