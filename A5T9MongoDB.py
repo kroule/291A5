@@ -8,15 +8,26 @@ db = client["A5db"]
 def runQuery(keywords):
     # Create or open the collection in the db
     listings_collection = db["listings"]
-
     """ Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet".  """
-    results = listings_collection.aggregate([
-        {
-            "$match" : { "reviews.comments" :  { "$search" : keywords } }
-        },
-    ])
+    index_name = listings_collection.create_index( [("reviews.comments", "text")] )
+    print(index_name)
+    results = listings_collection.find( { "$text" : { "$search" : keywords } } , { "score": { "$meta" : "textScore" } } ).sort( [("score", 1)] ).limit(1)
+    #results = listings_collection.aggregate([
+        #{
+            #"$match" : { "$text" : { "$search" : keywords } }
+        #},
+        #{
+            #"$project" : { "score" : { "$meta" : "textScore" } }
+        #},
+    #])
+    
+    #db.articles.find(
+   #{ $text: { $search: "cake" } },
+   #{ score: { $meta: "textScore" } }
+#)
     for row in results:
         print(row)
+        print("\n$#############################################\n")
         
 
 def main():
@@ -25,6 +36,6 @@ def main():
     if "listings" in collist:
         print("The collection exists.")
         
-    runQuery("great fantastic")
+    runQuery("great")
 
 main()
