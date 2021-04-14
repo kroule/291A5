@@ -13,20 +13,9 @@ def runQuery():
     user = str(input('enter keywords: '))
     """ Find the top 3 listings which have reviews most similar to a set of keywords given at run-time (e.g., using command line prompt or via an application parameter). Assume those keywords will be given in a comma separated string such as "nice, inexpensive, quiet".  """
     index_name = listings_collection.create_index( [("reviews.comments", "text")] )
-    results = listings_collection.find( { "$text" : { "$search" : user } } , { "score": { "$meta" : "textScore" } } ).sort( [("score", 1)] ).limit(1)
+    results = listings_collection.find( { "$text" : { "$search" : user } } , { "score": { "$meta" : "textScore" } } ).sort( [("score", 1)] ).limit(3)
     for row in results:
-        for i, v in row.items():
-            if(type(v) == str):
-                print(v.encode("utf-8"))
-            elif ( type(v) == list ):
-                for j in v:
-                    for k, l in j.items():
-                        if( type(l) == str ):
-                            print(l.encode("utf-8"))
-                        else:
-                            print(l)
-            else:
-                print(i + str(v))
+        print(row)
 
 
 def main():
