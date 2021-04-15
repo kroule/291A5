@@ -4,27 +4,21 @@ A single .tgz file containing a README.txt file, and all necessary (and commente
 
 Name: Jacob Nguyen, Keaton Roulette, Liam Gyori
 ccid: jvnguyen, roulette, lgyori
-collaboration statement: The above members worked on the project together
+collaboration statement: The above members worked on the project together and no other people were consulted or worked on the project.
 Included files: 
-	- README.txt
-	- A5T1.py
-	- A5T2.py
-	- A5T3MongoDB.py
-	- A5T3SQLite.py
-	- A5T4MongoDB.py
-	- A5T4SQLite.py
-	- A5T5MongoDB.py
-	- A5T5SQLite.py
-	- A5T8SQLite.py
-	- A5T8MongoDB.py
-	- A5T9MongoDB.py
+	- A5T1.py (when executed this will create the SQLite database for use in the other taks, no user input needed)
+	- A5T2.py   ( when executed this will embed the mongo database into the mongo depository, no user input needed)
+    - A5T3SQLite.py ( for task 3 SQLite when started the program will retur the the lowest numbered host_id's with the amount of listings infront, no user input needed)
+    - A5T3MongoDB.py ( for task 3 Mongo when started the program will return the host_id in order of the highest listing counts, no user input needed )
+	- A5T4SQLite.py ( for task 4 SQLite, when started the program will find and return the listing_id of all properties that do not have a review, no user input needed)
+	- A5T4MongoDB.py ( for task 4 Mongo, when started the program will find and return the listing_id of all properties that do not have a review, no user input needed)
+    - A5T5SQLite.py ( for task 5 SQLite, when started the user will be prompted to input a neighbourhood, the program will return the average nightly late rate for that property, user input needed.)
+    - A5T5MongoDB.py ( for task 5 Mongo, when started the user will be prompted to input a neighbourhood, the program will return the average nightly late rate for that property, user input needed.)
+	- A5T8SQLite.py (For task 8 SQLite, when started the user will enter a listing_id and this will return the host_name, rental_price and most recent review, user input is needed)
+	- A5T8MongoDB.py (For task 8 Mongo, when started the user will enter a listing_id and this will return the host_name, rental_price and most recent review, user input is needed)
+	- A5T9MongoDB.py (for task 9 Mongo, when start the user will enter keywords to be matched to property reviews and will return the top 3 listings with reviews that match the keywords, user input is needed)
 
-Instructions:
-	1). Make sure to have the "YVR_Airbnb_listings_summary.csv" and "YVR_Airbnb_reviews.csv" data in the same directory as the python files.
-	2). Run A5T1.py and A5T2.py. This will create the databases
-	3). Run the remaining python files as needed in any order.
-		3a). For Tasks 5 - Input a neighborhood to see average price (e.g: "Sunset" or "Downtown")
-		3b). For Task 8 - Input a single listing_id (e.g: 10080) Assuming input is known to exist - no error for non-existant printed out.
-		3c). For Task 9 - input a set of keywords separated by commas and once space. (e.g: "great, fantastic, horrible" )
+	- Tasks 3, 4, 5, 8, 9 
 
-Notes: Our python code for MongoClient uses port 27017
+
+	Important: for all mongo tasks they were tested on labmachines and ran the port: 27017
