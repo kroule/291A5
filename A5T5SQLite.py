@@ -14,6 +14,7 @@ def runQuery():
         Query = """SELECT AVG(price) FROM listings WHERE neighbourhood=? """
         connection = sqlite3.connect('A5.db')
         cursor = connection.cursor()
+        print("Enter a neighbourhood to find average rental cost")
         #x will a user inputed string of the neighbourhood to be queried
         x = str(input("enter neighbourhood: "))
         #execute the query with a user runtime input of a specific neighbourhood
@@ -36,7 +37,6 @@ def runQuery():
 # main function will query with the user inputed neighbourhood and return the avg price
 def main():
         global connection, cursor
-        print("Input listing id to find, host name, rental price and the most recent review")
         runQuery()
         
 main()

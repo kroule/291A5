@@ -9,6 +9,7 @@ db = client["A5db"]
 def runQuery():
     # Create or open the collection in the db
     listings_collection = db["listings"]
+    print("Enter a neighbourhood to find average rental cost")
     user = str(input('enter neighbourhood: '))
 
     """ Given a neighbourhood at run-time (e.g., using command line prompt or via an application parameter) find the average rental cost/night? """
@@ -27,7 +28,6 @@ def runQuery():
         print(row)
         
     print("T5 MongoDB runtime:  %s seconds" % (end_time - start_time)) 
-        
 
 def main():
     runQuery() 
