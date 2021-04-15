@@ -6,26 +6,27 @@ import sqlite3
 import time
 connection = None
 cursor = None
-start_time = time.time()
-
-A5 = []
-
 
 ######################### START OF QUERY ############################
 def runQuery():
         global connection, cursor
         
+        print("Listings with no reviews")
         #SQL STATEMENTS: select the id from listings where the id is not found in the listing_id from reviews and limit results to 10
         Query = """SELECT id FROM listings WHERE id NOT IN (SELECT listing_id FROM reviews) GROUP BY id LIMIT 10 """
         connection = sqlite3.connect('A5.db')
         cursor = connection.cursor()
         #execute the query with no runtime input as no input is required
+        start_time = time.time()
         cursor.execute(Query)
+        end_time = time.time()
         #fetch all of the results from the query and assign them to myresult
         myresult = cursor.fetchall()
         #for all results in myresult print each element of said results
         for x in myresult:
                 print(x)
+                
+        print("T4 SQLite runtime:  %s seconds" % (end_time - start_time))  
         #commit the connection
         connection.commit()
         #close the connection
@@ -37,5 +38,5 @@ def runQuery():
 def main():
         global connection, cursor
         runQuery()
+        
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))

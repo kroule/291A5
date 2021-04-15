@@ -4,14 +4,10 @@ import sqlite3
 import time
 connection = None
 cursor = None
-start_time = time.time()
-
-A5 = []
 
 ############################ START QUERY ##############################
 def runQuery():
         global connection, cursor
-        
         #SQL STATEMENT: find the host name, the price and comments from a user selected listing_id and order by the most recent date and limit results to 1 
         Query = """SELECT host_name, price, comments FROM listings, reviews WHERE listing_id=? ORDER BY date DESC LIMIT 1"""
         connection = sqlite3.connect('A5.db')
@@ -19,12 +15,16 @@ def runQuery():
         #user will input a integer listing_id for the query
         x = int(input("enter listing id: "))
         #execute the query with the user inputed integer (listing_id)
+        start_time = time.time()
         cursor.execute(Query, (x,))
+        end_time = time.time()
         # fetchall results of the query and assign it to myresult
         myresult = cursor.fetchall()
         #for every element in myresult print it off
         for x in myresult:
                 print(x)
+                
+        print("T8 SQLite runtime:  %s seconds" % (end_time - start_time))         
         #commit
         connection.commit()
         #close connection
@@ -37,5 +37,5 @@ def main():
         global connection, cursor
         print("Input listing id to find, host name, rental price and the most recent review")
         runQuery()
+        
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))

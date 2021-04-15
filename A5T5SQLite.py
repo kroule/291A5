@@ -5,9 +5,6 @@ import sqlite3
 import time
 connection = None
 cursor = None
-start_time = time.time()
-
-A5 = []
 
 #################################### START QUERY ########################
 def runQuery():
@@ -20,12 +17,16 @@ def runQuery():
         #x will a user inputed string of the neighbourhood to be queried
         x = str(input("enter neighbourhood: "))
         #execute the query with a user runtime input of a specific neighbourhood
+        start_time = time.time()
         cursor.execute(Query, (x,))
+        end_time = time.time()
         #fetch all of the results from the query and assign them to myresult
         myresult = cursor.fetchall()
         # for every element in myresult, print it
         for x in myresult:
                 print(x)
+                
+        print("T5 SQLite runtime:  %s seconds" % (end_time - start_time)) 
         #commit 
         connection.commit()
         #close connection
@@ -37,5 +38,5 @@ def main():
         global connection, cursor
         print("Input listing id to find, host name, rental price and the most recent review")
         runQuery()
+        
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))

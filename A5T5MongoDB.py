@@ -3,9 +3,8 @@
 from pymongo import MongoClient
 import time
 
-client = MongoClient()
+client = MongoClient('localhost', 27017)
 db = client["A5db"]
-start_time = time.time()
 
 def runQuery():
     # Create or open the collection in the db
@@ -13,6 +12,7 @@ def runQuery():
     user = str(input('enter neighbourhood: '))
 
     """ Given a neighbourhood at run-time (e.g., using command line prompt or via an application parameter) find the average rental cost/night? """
+    start_time = time.time()
     results = listings_collection.aggregate([ 
         {
             # Find listings with neighborhood
@@ -22,17 +22,14 @@ def runQuery():
             "$match" : {"_id" : user}
         }
     ])
+    end_time = time.time()
     for row in results:
         print(row)
         
+    print("T5 MongoDB runtime:  %s seconds" % (end_time - start_time)) 
+        
 
 def main():
-    # List collection names.
-    collist = db.list_collection_names()
-    if "listings" in collist:
-        print("The collection exists.")
-        
-    runQuery()
+    runQuery() 
 
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))

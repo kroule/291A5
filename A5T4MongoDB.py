@@ -3,15 +3,15 @@
 from pymongo import MongoClient
 import time 
 
-client = MongoClient()
+client = MongoClient('localhost', 27017)
 db = client["A5db"]
-start_time = time.time()
 
 def runQuery():
     # Create or open the collection in the db
     listings_collection = db["listings"]
-
+    print("Listings with no reviews")
     """ Find which listed property(ies) has(have) not received any review, order them by listing_id and output the top 10? """
+    start_time = time.time()
     results = listings_collection.aggregate([ 
         {
             # Find reviews with empty listings
@@ -30,17 +30,13 @@ def runQuery():
             "$project" : { "_id" : 0, "id" : 1 }
         }
     ])
+    end_time = time.time()
     for row in results:
         print(row)
         
+    print("T4 MongoDB runtime:  %s seconds" % (end_time - start_time))  
 
 def main():
-    # List collection names.
-    collist = db.list_collection_names()
-    if "listings" in collist:
-        print("The collection exists.")
-        
     runQuery()
 
 main()
-print("Program runtime:  %s seconds" % (time.time() - start_time))

@@ -3,7 +3,7 @@ import pymongo
 from pymongo import MongoClient
 import csv
 def main():
-	client = MongoClient()
+	client = MongoClient('localhost', 27017)
 
 	database = client["A5db"]
 	

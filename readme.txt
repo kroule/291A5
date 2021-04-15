@@ -20,5 +20,11 @@ Included files:
 	- A5T9MongoDB.py
 
 Instructions:
-	1). Make sure to have the "YVR_Airbnb_listings_summary.csv" and "YVR_Airbnb_reviews.csv" data in the same directory as the following files.
-	2). Run A5T1.py and A5T2.py. This will create the databases 
+	1). Make sure to have the "YVR_Airbnb_listings_summary.csv" and "YVR_Airbnb_reviews.csv" data in the same directory as the python files.
+	2). Run A5T1.py and A5T2.py. This will create the databases
+	3). Run the remaining python files as needed in any order.
+		3a). For Tasks 5 - Input a neighborhood to see average price (e.g: "Sunset" or "Downtown")
+		3b). For Task 8 - Input a single listing_id (e.g: 10080) Assuming input is known to exist - no error for non-existant printed out.
+		3c). For Task 9 - input a set of keywords separated by commas and once space. (e.g: "great, fantastic, horrible" )
+
+Notes: Our python code for MongoClient uses port 27017
