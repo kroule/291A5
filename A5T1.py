@@ -1,6 +1,7 @@
 """ Task 1: Write a Python application (A5T1.py) which will create an SQLite database with two tables, one for the summary listings and one with the reviews. The attribute for the tables should be clear from the headers in the CSV files. The input to the application should be .csv files provided above (they can be hard-coded within your application) and the output should be a SQLite database (A5.db). """
 
 import sqlite3, csv
+import time
 
 cursor = None
 connection = None
@@ -10,9 +11,10 @@ def main():
 	connection = sqlite3.connect('A5.db')
 	cursor = connection.cursor()
 
-	cursor.execute("DROP TABLE IF EXISTS Airbnb_reviews;")
+	start_time = time.time()
+	cursor.execute("DROP TABLE IF EXISTS reviews;")
 
-	cursor.execute("DROP TABLE IF EXISTS Airbnb_listings_summary;")
+	cursor.execute("DROP TABLE IF EXISTS listings;")
 
 	table1 = '''CREATE TABLE reviews(
 			listing_id INTEGER,
@@ -47,7 +49,8 @@ def main():
 	listingsRows = csv.reader(listingsFile)
 	next(listingsRows) #jumps to row after the header
 	cursor.executemany("INSERT INTO listings VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", listingsRows)
-
+	
+	print("T1 SQLite runtime:  %s seconds" % (time.time() - start_time)) 
 	connection.commit()
 	connection.close()
 
